@@ -164,3 +164,6 @@ footer a:hover{
         margin: auto;
     }
 }
+.navbar {
+    display: none;
+}
