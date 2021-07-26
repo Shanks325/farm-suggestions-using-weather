@@ -94,3 +94,5 @@ search.addEventListener("keyup", function () {
         search.classList.add("alert")
     }
 })
+
+// some comment
