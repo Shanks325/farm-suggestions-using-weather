@@ -6,6 +6,7 @@ let days = ["Sunday", "Monday", "Tuseday", "Wensday", "Thursday", "Friday", "Sat
 let Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",]
 let search = document.getElementById("search");
 let val=/^[\w\d/_ -/]{3,30}$/
+const croplist = ["rice","cotton","wheat","jowar","jute","sugar cane"]
 
 async function getWeather(city = "hyderabad") {
     let ApiResponse = await fetch(`HTTPS://api.weatherapi.com/v1/forecast.json?key=d81dd5121d184390a07103505212904&q=${city}&days=3`)
@@ -82,6 +83,9 @@ async function sequence(key) {
     await getWeather(key)
     setDate()
     setWeatherInfo()
+    setwaterreq()
+    setfertilizer()
+    setCrops()
 }
 sequence()
 search.addEventListener("keyup", function () {
@@ -94,5 +98,38 @@ search.addEventListener("keyup", function () {
         search.classList.add("alert")
     }
 })
+
+function setwaterreq() {
+    const temp = document.getElementsByClassName("temperature")[0].textContent
+    let texx
+    if (temp > 25){
+        texx = "High water requirement"
+    } else if (temp > 15){
+        texx = "Medium water requirement"
+    } else {
+        texx = "Low water requirement"
+    }
+    document.getElementsByClassName('water-req')[0].innerHTML = texx
+}
+
+function setfertilizer() {
+    document.getElementsByClassName("fertilizer")[0].innerHTML = document.getElementsByClassName("wind-speed")[0].textContent < 16 ? "Optimal for application of fertilizer" : "Not advisible condition for application of fertilizer"
+}
+
+function setCrops(){
+
+    const seed = document.getElementsByClassName("city-name")[0].textContent;
+    const myrng = new Math.seedrandom(seed);
+
+    let randomnumbers = new Set, ans;
+
+    while (randomnumbers.size < 3) {
+        randomnumbers.add(Math.floor(myrng() * 6));
+    }
+    ans = [...randomnumbers]
+    var crops_three = ans.map( i => croplist[i]);
+    document.getElementsByClassName("crops-list")[0].innerHTML = crops_three[0] + ", " + crops_three[1] + ", " + crops_three[2]; 
+
+}
 
 // some comment
