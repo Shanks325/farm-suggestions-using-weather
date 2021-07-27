@@ -7,7 +7,7 @@ let Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 let search = document.getElementById("search");
 let val=/^[\w\d/_ -/]{3,30}$/
 
-async function getWeather(city = "cairo") {
+async function getWeather(city = "hyderabad") {
     let ApiResponse = await fetch(`HTTPS://api.weatherapi.com/v1/forecast.json?key=d81dd5121d184390a07103505212904&q=${city}&days=3`)
     if (ApiResponse.status == 400) {
         console.clear()
