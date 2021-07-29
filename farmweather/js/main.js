@@ -9,7 +9,7 @@ let val=/^[\w\d/_ -/]{3,30}$/
 const croplist = ["rice","cotton","wheat","jowar","jute","sugar cane"]
 
 async function getWeather(city = "hyderabad") {
-    let ApiResponse = await fetch(`HTTPS://api.weatherapi.com/v1/forecast.json?key=d81dd5121d184390a07103505212904&q=${city}&days=3`)
+    let ApiResponse = await fetch(`HTTPS://api.weatherapi.com/v1/forecast.json?key=b2eb05fb36a246cb83d54700212907&q=${city}&days=3`)
     if (ApiResponse.status == 400) {
         console.clear()
         return null;
